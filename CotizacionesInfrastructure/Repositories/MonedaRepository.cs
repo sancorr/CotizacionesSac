@@ -37,23 +37,6 @@ namespace CotizacionesInfrastructure.Repositories
 			}
 		}
 
-		//public async Task<Moneda> ObtenerPorCodigoAsync(string codigo)
-		//{
-		//	try
-		//	{
-		//		string response = await _httpClient.GetStringAsync($"https://dolarapi.com/v1/dolares?codigo={codigo}");
-
-		//		var monedasPorCodigo = JsonConvert.DeserializeObject<List<Moneda>>(response);
-		//		return monedasPorCodigo.FirstOrDefault(x => x.Codigo == codigo);
-
-		//	}
-		//	catch (Exception ex)
-		//	{
-
-		//		throw ex;
-		//	}
-		//}
-
 		//LLAMADOS A API - COTIZACIONES EURO
 		public async Task<Moneda> ObtenerEuros()
 		{

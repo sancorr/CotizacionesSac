@@ -12,8 +12,6 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApi", "CotizacionesApi.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApplicat" +
-    "ion", "CotizacionesApplication.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesDomain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain", "CotizacionesDomain.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesInfrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" +
     "", "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastr" +

@@ -16,14 +16,10 @@
       "Microsoft.OpenApi/1.2.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/5.6.3": {
@@ -44,14 +40,10 @@
           "Microsoft.OpenApi": "1.2.3"
         },
         "compile": {
-          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Swagger.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -63,14 +55,10 @@
           "Swashbuckle.AspNetCore.Swagger": "5.6.3"
         },
         "compile": {
-          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -79,30 +67,14 @@
       "Swashbuckle.AspNetCore.SwaggerUI/5.6.3": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
-      },
-      "CotizacionesApplication/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "CotizacionesDomain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CotizacionesApplication.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CotizacionesApplication.dll": {}
-        }
       },
       "CotizacionesDomain/1.0.0": {
         "type": "project",
@@ -235,11 +207,6 @@
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
-    "CotizacionesApplication/1.0.0": {
-      "type": "project",
-      "path": "../CotizacionesApplication/CotizacionesApplication.csproj",
-      "msbuildProject": "../CotizacionesApplication/CotizacionesApplication.csproj"
-    },
     "CotizacionesDomain/1.0.0": {
       "type": "project",
       "path": "../CotizacionesDomain/CotizacionesDomain.csproj",
@@ -253,7 +220,6 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "CotizacionesApplication >= 1.0.0",
       "CotizacionesInfrastructure >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
@@ -285,9 +251,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApplication\\CotizacionesApplication.csproj": {
-              "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApplication\\CotizacionesApplication.csproj"
-            },
             "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj": {
               "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj"
             }
@@ -315,17 +278,10 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.17, 5.0.17]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -334,7 +290,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.428\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

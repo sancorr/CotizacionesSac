@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i6YP9Lsam2NyLx7uBEJmvkfyuWO1iVJLUeZ4h8oe1zWdCx8xnS3wwl1YIG21cA+kiHllTZf18XBy+EreDDogAQ==",
+  "dgSpecHash": "VQD1GAfs5gpbYYmDqbJA22UtzDpcgf+YPGNMc6UDgI8y9hh6kFnCFC/ig5pcbJGlFAkp14VOPpdMZl0T+0DM7g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApi\\CotizacionesApi.csproj",
   "expectedPackageFiles": [
@@ -9,8 +9,7 @@
     "C:\\Users\\Positivo BGH\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\Positivo BGH\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "C:\\Users\\Positivo BGH\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
-    "C:\\Users\\Positivo BGH\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
-    "C:\\Users\\Positivo BGH\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+    "C:\\Users\\Positivo BGH\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
   ],
   "logs": []
 }

@@ -28,9 +28,6 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApplication\\CotizacionesApplication.csproj": {
-                "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApplication\\CotizacionesApplication.csproj"
-              },
               "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj": {
                 "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj"
               }
@@ -72,25 +69,6 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
-      }
-    },
-    "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApplication\\CotizacionesApplication.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApplication\\CotizacionesApplication.csproj",
-        "projectName": "CotizacionesApplication",
-        "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApplication\\CotizacionesApplication.csproj",
-        "frameworks": {
-          "net472": {
-            "projectReferences": {
-              "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain\\CotizacionesDomain.csproj": {
-                "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain\\CotizacionesDomain.csproj"
-              }
-            }
-          }
-        }
-      },
-      "frameworks": {
-        "net472": {}
       }
     },
     "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain\\CotizacionesDomain.csproj": {

@@ -1883,7 +1883,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "CotizacionesApplication": "1.0.0",
           "CotizacionesInfrastructure": "1.0.0",
           "Swashbuckle.AspNetCore": "5.6.3"
         },
@@ -1896,18 +1895,6 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
-      },
-      "CotizacionesApplication/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "CotizacionesDomain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CotizacionesApplication.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CotizacionesApplication.dll": {}
-        }
       },
       "CotizacionesDomain/1.0.0": {
         "type": "project",
@@ -6367,11 +6354,6 @@
       "type": "project",
       "path": "../CotizacionesApi/CotizacionesApi.csproj",
       "msbuildProject": "../CotizacionesApi/CotizacionesApi.csproj"
-    },
-    "CotizacionesApplication/1.0.0": {
-      "type": "project",
-      "path": "../CotizacionesApplication/CotizacionesApplication.csproj",
-      "msbuildProject": "../CotizacionesApplication/CotizacionesApplication.csproj"
     },
     "CotizacionesDomain/1.0.0": {
       "type": "project",
