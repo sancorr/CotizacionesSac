@@ -1,0 +1,9 @@
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\bin\Debug\CotizacionesApplication.dll
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\bin\Debug\CotizacionesApplication.pdb
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\bin\Debug\CotizacionesDomain.dll
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\bin\Debug\CotizacionesDomain.pdb
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\obj\Debug\CotizacionesApplication.csproj.AssemblyReference.cache
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\obj\Debug\CotizacionesApplication.csproj.CoreCompileInputs.cache
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\obj\Debug\CotizacionesApplication.csproj.CopyComplete
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\obj\Debug\CotizacionesApplication.dll
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApplication\obj\Debug\CotizacionesApplication.pdb

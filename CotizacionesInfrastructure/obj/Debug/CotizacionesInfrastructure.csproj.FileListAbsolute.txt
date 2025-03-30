@@ -1,0 +1,11 @@
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\bin\Debug\CotizacionesInfrastructure.dll
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\bin\Debug\CotizacionesInfrastructure.pdb
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\bin\Debug\CotizacionesDomain.dll
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\bin\Debug\CotizacionesDomain.pdb
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.csproj.AssemblyReference.cache
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.csproj.CopyComplete
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.dll
+C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.pdb
