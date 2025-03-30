@@ -260,5 +260,128 @@ Tiene la misma estructura y funcionalidad, la unica diferencia es que no deseria
 ```
 
 
+
+
 **CotizacionesTests/MonedaControllerIntegrationTest.cs**
 
+Esta clase es la encargada de los tests de integracion, obteniendo los datos de la api de DolarApi
+
+Esta clase hereda la interface IClassFixture, que es una interfaz que permite crear un servidor en memoria para poder consultar los datos.
+
+1. **private readonly HttpClient _client;** Variable privada de solo lectura que guarda un objeto de tipo HttpClient
+
+
+Contructor que crea un cliente HTTP para probar la API en un servidor en memoria
+```bash
+	public MonedaControllerIntegrationTest(WebApplicationFactory<Program> factory)
+		{
+			_client = factory.CreateClient();
+		}
+```
+
+- ```WebApplicationFactory<Program>``` le indica cual es el punto de entrada de la aplicación (la clase Program.cs)
+
+3. ```bash
+	[Fact]
+		public async Task ObtnerDolares_RetornaCotizacionesReales()
+		{
+			//Act, peticion a la API de aplicacion por el endpoint del controlador
+			var response = await _client.GetStringAsync("/api/monedas/dolares");
+
+			//Deserializacion de los objetos JSON de la respuesta de la API, en una LIST<>
+			var dolares = JsonConvert.DeserializeObject<List<Moneda>>(response);
+			
+			//verificaciones de la respuesta - verifica que el JSON no sea una lista vacia
+			Assert.NotEmpty(dolares);
+
+
+		} 
+	```
+
+Los siguientes métodos : 
+- ObtenerEuro_RetornaCotizacionReal()
+- ObtenerReal_RetornaCotizacionReal()
+- ObtenerChileno_RetornaCotizacionReal()
+- ObtenerUY_RetornaCotizacionReal()
+
+Siguen la misma lógica y estructura, con la diferencia de cada uno hace la peticion a su endpoint correspondiente según está establecido por **MonedaController.cs**
+
+
+**CotizacionesTests/MonedaControllerTest.cs**
+
+Esta clase es la encargada de las pruebas unitarias de los métodos que obtienen la información de las peticiónes de divisas a la API de DolarApi. Se utilizan la libreria de XUnit para testing en .NET y Moc para la creacion de MOCS que simulan los datos.
+
+- **[Fact]** --> Indica que se trata de una prueba unitaria.
+
+```bash
+
+		[Fact]
+		public async Task ObtenerEuro_RetornaValorCorrecto() {
+
+			var mockInterface = new Mock<IMonedaRepository>(); //Mock de la interfaz
+			mockInterface.Setup(repo => repo.ObtenerEuros()).ReturnsAsync(new Moneda( //Llamado al metodo que establece la interfaz
+				(decimal)125.36,
+				(decimal)325.69,
+				"Oficial",
+				"Euro",
+				"EUR", 
+				DateTime.Now));
+
+			var controller = new MonedaController(mockInterface.Object); //instancia de la clase que tiene el controlador, inyectando el mock recien creado
+
+			var resultado = await controller.obtenerEuro() as OkObjectResult;
+
+			var moneda = resultado?.Value as Moneda; //extaigo la moneda de la respuesta convirtiendo la respuesta en una instacia de moneda
+
+			//verificaciones de resultados
+
+			Assert.NotNull(resultado);
+			Assert.Equal(200, resultado.StatusCode);
+			Assert.NotNull(moneda);
+			Assert.Equal("Euro", moneda.Nombre);
+			Assert.Equal((decimal)125.36, moneda.Compra);
+			Assert.Equal((decimal)325.69, moneda.Venta);
+		}
+```
+
+- ``` var mockInterface = new Mock<IMonedaRepository>();```  Crea una instancia de MOCK y le inyecta la inteface que decalara los metodos a testear
+
+- Configuro el MOCK usando el método Setup para poder acceder al metodo que se debe testear, el cual es asíncrono, entonces con el método **.ReturnsAsync(Moneda)** voy a obtener un objeto Moneda, de manera asíncrona. Al mismo tiempo, Moneda en su constructor recibe la informacion que lo conforma como objeto modelo (entidad), lo que declare en los parametros del constructor serán los datos que devolverá la prueba unitaria 
+ ```
+  mockInterface.Setup(repo => repo.ObtenerEuros()).ReturnsAsync(new Moneda( //Llamado al metodo que establece la interfaz
+				(decimal)125.36,
+				(decimal)325.69,
+				"Oficial",
+				"Euro",
+				"EUR", 
+				DateTime.Now));
+```
+
+ ```bash 
+	var controller = new MonedaController(mockInterface.Object); //instancia de la clase que tiene el controlador, inyectando el mock recien creado  
+``` 
+
+- La siguiente linea:
+```bash 
+	var resultado = await controller.obtenerEuro() as OkObjectResult;
+``` 
+Espera por la respuesta del método del controlador recien creado que tiene el Mock con la información ya inyectado, dicha respuesta es espera como un **OkObjectResult**
+
+- La siguiente linea:
+```bash 
+	var moneda = resultado?.Value as Moneda;
+``` 
+Extrae el objeto Moneda de la respuesta, contemplando la posibilidad de que dicha respuesta sea Null (resultado?.Value)
+
+- Finalmente, lo que resta son las verificaciones de la prueba usando la clase Assert y sus métodos.
+```bash 
+	
+			Assert.NotNull(resultado);
+			Assert.Equal(200, resultado.StatusCode);
+			Assert.NotNull(moneda);
+			Assert.Equal("Euro", moneda.Nombre);
+			Assert.Equal((decimal)125.36, moneda.Compra);
+			Assert.Equal((decimal)325.69, moneda.Venta);
+``` 
+
+- El resto de los métodos siguen la misma estructura y lógica, con la diferencia de que **ObtenerDolares_ValoresCorrectos()** lo que retorna asíncronamente es una ```List<Moneda>``` en lugar de devolver un objeto único como el resto de los métodos.
