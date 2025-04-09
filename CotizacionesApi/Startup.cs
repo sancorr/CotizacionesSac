@@ -30,8 +30,9 @@ namespace CotizacionesApi
 		{
 
 			services.AddControllers();
-			//inyeccion de dependencia
+			//inyeccion de dependencias
 			services.AddHttpClient<IMonedaRepository, MonedaRepository>();
+			services.AddHttpClient<ICotizacionesRepository, MarketCodesRepositories>();
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "CotizacionesApi", Version = "v1" });

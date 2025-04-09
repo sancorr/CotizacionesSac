@@ -42,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Cotizacion.cs" />
+    <Compile Include="Entities\FinancialInstrument.cs" />
+    <Compile Include="Entities\IndexConstituent.cs" />
+    <Compile Include="Entities\LastQuote.cs" />
+    <Compile Include="Entities\MarketCode.cs" />
     <Compile Include="Entities\Moneda.cs" />
     <Compile Include="Interfaces\ICotizacionesRepository.cs" />
     <Compile Include="Interfaces\IMonedaRepository.cs" />

@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CotizacionesApplication\CotizacionesApplication.csproj" />
     <ProjectReference Include="..\CotizacionesInfrastructure\CotizacionesInfrastructure.csproj" />
   </ItemGroup>
 

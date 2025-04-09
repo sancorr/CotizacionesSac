@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\MarketCodesRepositories.cs" />
     <Compile Include="Repositories\MonedaRepository.cs" />
   </ItemGroup>
   <ItemGroup>

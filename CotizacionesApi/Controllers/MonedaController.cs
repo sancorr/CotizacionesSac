@@ -27,6 +27,8 @@ namespace CotizacionesApi.Controllers
 
 				if (monedas == null)
 					return NotFound();
+				if (!monedas.Any())
+					return Ok("No hay elementos que mostrar");
 
 
 				return Ok(monedas);
@@ -38,23 +40,6 @@ namespace CotizacionesApi.Controllers
 			}
 
 		}
-
-		//[HttpGet("{codigo}")]
-		//public async Task<IActionResult> obtenerPorCodigo(string codigo) {
-		//	try
-		//	{
-		//		var moneda = await _monedaRepository.ObtenerPorCodigoAsync(codigo);
-		//		if (moneda == null)
-		//			return NotFound($"No se encontro una moneda con ese código: {codigo}");
-		//		else
-		//			return Ok(moneda);
-		//	}
-		//	catch (Exception ex)
-		//	{
-
-		//		throw ex;
-		//	}
-		//}
 
 		[HttpGet("euro")]
 		public async Task<IActionResult> obtenerEuro()
