@@ -159,5 +159,23 @@ namespace CotizacionesApi.Controllers
 				throw;
 			}
 		}
+
+		[HttpGet("last-quote")]
+		public async Task<IActionResult> GetLastQuoteInstrument([FromQuery] string symbol)
+		{
+			try
+			{
+				var lastQuote = await _CotizacionesRepo.GetLastQuote(symbol);
+
+				if (lastQuote == null)
+					return NotFound();
+
+				return Ok(lastQuote);
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
 	}
 }

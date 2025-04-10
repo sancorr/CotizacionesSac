@@ -147,5 +147,22 @@ namespace CotizacionesInfrastructure.Repositories
 				throw ex;
 			}
 		}
+
+		// 8 - Obtener la ultima cotizacion de un elemento, recibe el Symbol de una accion y el Ticker de un indice
+		public async Task<LastQuote> GetLastQuote(string symbol)
+		{
+			try
+			{
+				string response = await _httpClient.GetStringAsync($"https://api.profit.com/data-api/market-data/quote/{symbol}?token={token}");
+
+				var lastQuote = JsonConvert.DeserializeObject<LastQuote>(response);
+
+				return lastQuote;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
 	}
 }

@@ -23,5 +23,7 @@ namespace CotizacionesDomain.Interfaces
 		Task<List<FinancialInstrument>> GetStocksMarketsCountry(string exchangeCode);
 		//7 - Constituyentes de un indice
 		Task<List<IndexConstituent>> GetIndexesConstituens(string symbol);
+		//8 - Ultima cotizacion de un instrumento
+		Task<LastQuote> GetLastQuote(string symbol);
 	}
 }
