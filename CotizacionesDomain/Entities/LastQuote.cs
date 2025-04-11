@@ -37,6 +37,25 @@ namespace CotizacionesDomain.Entities
 		public string Broker { get; set; }
 		[JsonProperty("ohlc_week")]
 		public OHLC_Weekly OhlcWeek { get; set; }
+
+		public LastQuote(string ticker, string name, string symbol, decimal price, decimal previousClose, decimal dailyPriceChange, decimal dailyPercentageChange, long timeStamp, string assetClass, string currency, string logoUrl, long volume, string broker, OHLC_Weekly ohlcWeek) 
+		{
+			Ticker = ticker;
+			Name = name;
+			Symbol = symbol;
+			Price = price;
+			PreviousClose = previousClose;
+			DailyPriceChange = dailyPriceChange;
+			DailyPercentageChange = dailyPercentageChange;
+			Timestamp = timeStamp;
+			AssetClass = assetClass;
+			Currency = currency;
+			LogoUrl = logoUrl;
+			Volume = volume;
+			Broker = broker;
+			OhlcWeek = ohlcWeek;
+			
+		}
 	}
 
 	public class OHLC_Weekly
@@ -49,5 +68,13 @@ namespace CotizacionesDomain.Entities
 		public decimal Low { get; set; }
 		[JsonProperty("close")]
 		public decimal Close { get; set; }
+
+		public OHLC_Weekly(decimal open, decimal high, decimal low, decimal close)
+		{
+			Open = open;
+			High = high;
+			Low = low;
+			Close = close;
+		}
 	}
 }

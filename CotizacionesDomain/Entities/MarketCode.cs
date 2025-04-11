@@ -10,5 +10,14 @@ namespace CotizacionesDomain.Entities
 	{
 		public string Name { get; set; }
 		public string Code { get; set; }
+
+		public MarketCode(string name, string code)
+		{
+			Name = name;
+			Code = code;
+		}
+
 	}
+
+	
 }

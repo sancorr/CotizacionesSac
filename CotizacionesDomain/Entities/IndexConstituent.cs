@@ -14,5 +14,15 @@ namespace CotizacionesDomain.Entities
 		public string Name { get; set; }
 		public string Sector { get; set; }
 		public string Industry { get; set; }
+
+		public IndexConstituent(string ticker, string code, string exchange, string name, string sector, string industry)
+		{
+			Ticker = ticker;
+			Code = code;
+			Exchange = exchange;
+			Name = name;
+			Sector = sector;
+			Industry = industry;
+		}
 	}
 }

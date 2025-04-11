@@ -15,5 +15,18 @@ namespace CotizacionesDomain.Entities
 		public string Currency { get; set; }
 		public string Country { get; set; }
 		public string Exchange { get; set; }
+
+
+		public FinancialInstrument(string ticker, string symbol, string name, string type, string currency,
+			string country, string exchange)
+		{
+			Ticker = ticker;
+			Symbol = symbol;
+			Name = name;
+			Type = type;
+			Currency = currency;
+			Country = country;
+			Exchange = exchange;
+		}
 	}
 }
