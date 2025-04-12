@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CotizacionesDomain.Interfaces;
+using CotizacionesDomain.Entities;
 
 namespace CotizacionesApi.Controllers
 {
@@ -108,7 +109,7 @@ namespace CotizacionesApi.Controllers
 				if (indexesByExchange == null)
 					return NotFound();
 				if (!indexesByExchange.Any())
-					return Ok("No hay elementos que mostrar");
+					return Ok(new List<FinancialInstrument>());
 
 				return Ok(indexesByExchange);
 			}
@@ -129,7 +130,7 @@ namespace CotizacionesApi.Controllers
 					return NotFound();
 
 				if (!stocksByExchange.Any())
-					return Ok("No hay elementos para mostrar");
+					return Ok(new List<FinancialInstrument>());
 
 				return Ok(stocksByExchange);
 			}
@@ -150,13 +151,13 @@ namespace CotizacionesApi.Controllers
 					return NotFound();
 
 				if (!indexesCons.Any())
-					return Ok("Sin elementos para mostar");
+					return Ok(new List<IndexConstituent>());
 
 				return Ok(indexesCons);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				throw;
+				return StatusCode(500, $"Ocurrio un error: {ex.Message}");
 			}
 		}
 
