@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DOCUMENTACIONTECNICA.md = DOCUMENTACIONTECNICA.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CotizacionesApplicatioin", "CotizacionesApplicatioin\CotizacionesApplicatioin.csproj", "{7029D14D-8D4B-4250-B691-AC4D40131D08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{4439C936-10AF-4576-9945-CF4D01E0823A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4439C936-10AF-4576-9945-CF4D01E0823A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4439C936-10AF-4576-9945-CF4D01E0823A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7029D14D-8D4B-4250-B691-AC4D40131D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7029D14D-8D4B-4250-B691-AC4D40131D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7029D14D-8D4B-4250-B691-AC4D40131D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7029D14D-8D4B-4250-B691-AC4D40131D08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

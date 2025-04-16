@@ -9,3 +9,14 @@ C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrast
 C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.csproj.CopyComplete
 C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.dll
 C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.pdb
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\bin\Debug\CotizacionesInfrastructure.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\bin\Debug\CotizacionesInfrastructure.pdb
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\bin\Debug\CotizacionesDomain.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\bin\Debug\CotizacionesDomain.pdb
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.csproj.CopyComplete
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesInfrastructure\obj\Debug\CotizacionesInfrastructure.pdb

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApi\\CotizacionesApi.csproj": {}
+    "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesApi\\CotizacionesApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApi\\CotizacionesApi.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesApi\\CotizacionesApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApi\\CotizacionesApi.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesApi\\CotizacionesApi.csproj",
         "projectName": "CotizacionesApi",
-        "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApi\\CotizacionesApi.csproj",
-        "packagesPath": "C:\\Users\\Positivo BGH\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApi\\obj\\",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesApi\\CotizacionesApi.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Positivo BGH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj": {
-                "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj"
+              "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj": {
+                "projectPath": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj"
               }
             }
           }
@@ -47,6 +51,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             }
           },
           "imports": [
@@ -67,15 +75,15 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain\\CotizacionesDomain.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesDomain\\CotizacionesDomain.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain\\CotizacionesDomain.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesDomain\\CotizacionesDomain.csproj",
         "projectName": "CotizacionesDomain",
-        "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain\\CotizacionesDomain.csproj",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesDomain\\CotizacionesDomain.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}
@@ -86,16 +94,16 @@
         "net472": {}
       }
     },
-    "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj",
         "projectName": "CotizacionesInfrastructure",
-        "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesInfrastructure\\CotizacionesInfrastructure.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain\\CotizacionesDomain.csproj": {
-                "projectPath": "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain\\CotizacionesDomain.csproj"
+              "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesDomain\\CotizacionesDomain.csproj": {
+                "projectPath": "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesDomain\\CotizacionesDomain.csproj"
               }
             }
           }

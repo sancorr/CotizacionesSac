@@ -11,11 +11,10 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesApi", "CotizacionesApi.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesDomain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesDomain", "CotizacionesDomain.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesApi", "CotizacionesApi.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesDomain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesDomain", "CotizacionesDomain.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CotizacionesInfrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" +
-    "", "C:\\Users\\Positivo BGH\\Desktop\\Proyectos\\CotizacionesSolution\\CotizacionesInfrastr" +
-    "ucture", "CotizacionesInfrastructure.csproj", "0")]
+    "", "C:\\Users\\Usuario\\Desktop\\Proyectos\\CotizacionesSac\\CotizacionesInfrastructure", "CotizacionesInfrastructure.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CotizacionesTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

@@ -33,3 +33,38 @@ C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApi\obj
 C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApi\obj\Debug\net5.0\ref\CotizacionesApi.dll
 C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.pdb
 C:\Users\Positivo BGH\Desktop\Proyectos\CotizacionesSolution\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.genruntimeconfig.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\ref\CotizacionesApi.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.pdb
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\appsettings.json
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesApi.exe
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesApi.deps.json
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesApi.runtimeconfig.json
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesApi.runtimeconfig.dev.json
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesApi.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\ref\CotizacionesApi.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesApi.pdb
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesDomain.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesInfrastructure.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesInfrastructure.pdb
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\CotizacionesDomain.pdb
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\bin\Debug\net5.0\Newtonsoft.Json.xml
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\staticwebassets\CotizacionesApi.StaticWebAssets.Manifest.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\staticwebassets\CotizacionesApi.StaticWebAssets.xml
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\scopedcss\bundle\CotizacionesApi.styles.css
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.RazorTargetAssemblyInfo.cache
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.csproj.CopyComplete
+C:\Users\Usuario\Desktop\Proyectos\CotizacionesSac\CotizacionesApi\obj\Debug\net5.0\CotizacionesApi.genruntimeconfig.cache
