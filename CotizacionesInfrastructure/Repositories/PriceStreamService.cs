@@ -8,6 +8,7 @@ using CotizacionesDomain.Interfaces;
 using System.Net.WebSockets;
 using Newtonsoft.Json;
 using System.Threading;
+using CotizacionesInfrastructure.Helpers;
 
 namespace CotizacionesInfrastructure.Repositories
 {
@@ -15,8 +16,6 @@ namespace CotizacionesInfrastructure.Repositories
     {
         //Esta variable es el cliente WebSocket de .NET, que permite abrir y mantener una conexión WebSocket.
         private readonly ClientWebSocket _webSocket = new ClientWebSocket();
-
-        //private readonly string token = "f89dee4238b641e684301f3973086aaf";
 
         private readonly Uri _uri;
 
@@ -29,9 +28,11 @@ namespace CotizacionesInfrastructure.Repositories
         public event Action<PriceData> OnPriceRecieved;
 
         //Constructor
-        public PriceStreamService(string token)
+        public PriceStreamService()
         {
+            var token = ProfitApiSettingsLoader.LoadToken();
             _uri = new Uri($"wss://api.profit.com/real-time?token={token}");
+            _cts = new CancellationTokenSource();
         }
 
 
@@ -120,3 +121,4 @@ namespace CotizacionesInfrastructure.Repositories
         }
 
     }
+}

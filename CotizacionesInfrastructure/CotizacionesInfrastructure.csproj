@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ProfitApiSettingsLoader.cs" />
+    <Compile Include="ProfitApiSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MarketCodesRepositories.cs" />
     <Compile Include="Repositories\MonedaRepository.cs" />
+    <Compile Include="Repositories\PriceStreamService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CotizacionesDomain\CotizacionesDomain.csproj">

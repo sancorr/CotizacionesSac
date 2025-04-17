@@ -50,8 +50,10 @@
     <Compile Include="Entities\LastQuote.cs" />
     <Compile Include="Entities\MarketCode.cs" />
     <Compile Include="Entities\Moneda.cs" />
+    <Compile Include="Entities\PriceData.cs" />
     <Compile Include="Interfaces\ICotizacionesRepository.cs" />
     <Compile Include="Interfaces\IMonedaRepository.cs" />
+    <Compile Include="Interfaces\IPriceStreamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1925,6 +1925,8 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "CotizacionesInfrastructure": "1.0.0",
+          "Microsoft.Extensions.Options": "5.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "5.0.0",
           "Swashbuckle.AspNetCore": "5.6.3",
           "System.Text.Json": "9.0.4"
         },

@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CotizacionesDomain.Interfaces;
 using CotizacionesInfrastructure.Repositories;
+using CotizacionesInfrastructure;
 
 namespace CotizacionesApi
 {
@@ -33,6 +34,9 @@ namespace CotizacionesApi
 			//inyeccion de dependencias
 			services.AddHttpClient<IMonedaRepository, MonedaRepository>();
 			services.AddHttpClient<ICotizacionesRepository, MarketCodesRepositories>();
+			services.Configure<ProfitApiSettings>(Configuration.GetSection("ProfitApi"));
+			services.AddSingleton<IPriceStreamService,PriceStreamService>();
+
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "CotizacionesApi", Version = "v1" });
