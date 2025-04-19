@@ -7,7 +7,7 @@ CotizacionesSolution está organizado en las siguientes carpetas:
 Contiene la API principal que gestiona las cotizaciones
 **Archivos principales:**
 - **Program.cs**: Punto de entrada de la aplicación
-- **Starup.cs**: Configuracion de los servicios y middlewares.
+- **Startup.cs**: Configuracion de los servicios y middlewares.
 - **Controllers/MonedaController.cs**: Controlador de tipo tipo API que maneja las solicitudes HTTP a la API, cuya ruta especificada es "api/monedas/".
 
 2. CotizacionesDomain/
@@ -385,3 +385,458 @@ Extrae el objeto Moneda de la respuesta, contemplando la posibilidad de que dich
 ``` 
 
 - El resto de los métodos siguen la misma estructura y lógica, con la diferencia de que **ObtenerDolares_ValoresCorrectos()** lo que retorna asíncronamente es una ```List<Moneda>``` en lugar de devolver un objeto único como el resto de los métodos.
+
+### Sección: Cotizaciones e Instrumentos financieros - Integracion con ProfitAPI
+##### Fuente de información: https://api.profit.com/
+##### Tipos de datos: 
+Instrumentos financieros, índices, cotizaciónes y mercados
+##### Frecuencia de actualización: 
+Puede variar según el endpoint, generalmente es información semi-estática o actualizable por llamada.
+##### Autenticación: 
+Se requiere un token de autenticación (obtenido previamente). Este se incluye como query param al iniciar la conexión.
+
+##### Clases e interfaces
+###### - ICotizacionesRepository
+Define el contrato que implementa el repositorio que gestiona:
+- Códigos de mercado
+- Indices globales y por país
+- Acciones por mercados (códigos de mercados)
+- Ultimas cotizaciones de instrumentos (precio de cierre)
+- Constituyentes de un índice solicitado
+
+```bash
+	public interface ICotizacionesRepository
+{
+    Task<List<MarketCode>> GetStocksMarketsCode();
+    Task<List<MarketCode>> GetIndexesMarketsCode();
+    Task<List<FinancialInstrument>> GetAllIndexes();
+    Task<List<FinancialInstrument>> GetUsaIndexes();
+    Task<List<FinancialInstrument>> GetIndexesMarketCountry(string exchangeCode);
+    Task<List<FinancialInstrument>> GetStocksMarketsCountry(string exchangeCode);
+    Task<List<IndexConstituent>> GetIndexesConstituens(string symbol);
+    Task<LastQuote> GetLastQuote(string symbol);
+}
+
+```
+
+##### Entidades:
+###### - **FinancialInstrument.cs**
+Representa un activo financiero como una acción, bono o un índice
+
+```bash
+Propiedad	| Tipo   | Descripción
+Ticker		| string | Código de cotización
+Symbol		| string | Símbolo único
+Name		| string | Nombre completo del activo
+Type		| string | Tipo de instrumento (acción, índice)
+Currency	| string | Moneda de cotización
+Country		| string | País del mercado
+Exchange	| string | Bolsa o mercado correspondiente
+```
+
+###### - **IndexConstituent.cs**
+Representa un activo que forma parte de un índice financiero.
+
+```bash
+Propiedad | Tipo   | Descripción
+Ticker    | string | Código bursátil del activo
+Code      | string | Código interno o alternativo
+Exchange  | string | Mercado en el que cotiza
+Name      | string | Nombre del activo
+Sector    | string | Sector económico
+Industry  | string | Industria específica
+```
+
+###### - **MarketCode.cs**
+Códigos de los mercados disponibles para acciones o índices.
+
+```bash
+Propiedad | Tipo   | Descripción
+Name      | string | Nombre del mercado
+Code      | string | Código único del mercado
+```
+
+###### - **PriceData.cs**
+Información de cotización
+
+```bash
+Propiedad | Tipo    | Descripción
+Ticker    | string  | Código del instrumento
+Price     | decimal | Último precio conocido
+Timestamp | long    | Fecha/hora de la cotización 
+Volume    | decimal | Volumen operado
+```
+
+###### - **LastQuote.cs**
+Última cotización completa de un instrumento (precio de cierre anterior).
+
+```bash
+Propiedad             | Tipo        | Descripción
+Ticker                | string      | Código del instrumento
+Name                  | string      | Nombre del activo
+Symbol                | string      | Símbolo bursátil
+Price                 | decimal     | Precio actual
+PreviousClose         | decimal     | Cierre del día anterior
+DailyPriceChange      | decimal     | Diferencia de precio respecto al cierre
+DailyPercentageChange | decimal     | Variación porcentual diaria
+Timestamp             | long        | Timestamp UNIX
+AssetClass            | string      | Clase de activo
+Currency              | string      | Moneda
+LogoUrl               | string      | URL del logo (si aplica)
+Volume                | long        | Volumen operado
+Broker                | string      | Corredor o intermediario
+OhlcWeek              | OHLC_Weekly | Apertura, cierre, máximo y mínimo
+```
+###### - **OHLC_Weekly**
+Datos semanales del instrumento.
+```bash
+Propiedad | Tipo    | Descripción
+Open      | decimal | Precio de apertura
+High      | decimal | Máximo semanal
+Low       | decimal | Mínimo semanal
+Close     | decimal | Cierre semanal
+```
+
+#### Ejemplo de uso
+1 - GetStocksMarketsCode()
+	
+Obtiene los códigos de mercado disponibles para acciones.
+
+2 - GetStocksMarketsCountry("NYSE")
+
+Devuelve todas las acciones que cotizan en la bolsa de NY.
+
+3 - GetLastQuote("AAPL")
+Trae la última cotización de Apple Inc.
+
+4 - GetIndexesConstituens("NDX")
+
+Lista todos los activos que componen el índice Nasdaq.
+
+
+
+### MarketCodesRepositories.cs - Documentación
+Esta es la clase repositorio que implementa el contrato de la Interface ICotizacionesRepository. Su objetivo es conectarse a la **API de Profit** y recuperar información relacionada con: 
+- Códigos de mercados (acciones e índices).
+- Listados de índices o acciones por mercado.
+- Últimas cotizaciones de instrumentos solicitados.
+- Componentes (constituyentes) de índices financieros.
+
+#### Dependencias
+- **HttpClient:** usado para realizar peticiones HTTP a la API de Profit.
+
+- **Newtonsoft.Json:** para deserializar los JSON que devuelve la API.
+
+- **JObject:** permite acceder a objetos JSON anidados cuando la API envía respuestas con estructuras complejas.
+
+#### Token
+El acceso a la API de Profit requiere un token. En esta clase está definido como:
+```bash
+	private readonly string token = "f89dee4238b641e684301f3973086aaf";
+```
+
+#### Constructor
+```bash
+	public MarketCodesRepositories(HttpClient httpClient)
+```
+- Inyecta una instancia de HttpClient mediante inyección de dependencias (DI), lo que permite su reutilización y testeo.
+
+###### Métodos
+
+1. **GetStocksMarketsCode()**
+
+Obtiene los mercados disponibles para acciones.
+
+GET: https://api.profit.com/data-api/reference/exchanges?token={token}&type=stocks
+
+Devuelve: List<**MarketCode**>
+
+2. **GetIndexesMarketsCode()**
+
+Obtiene los mercados disponibles para índices.
+
+GET: https://api.profit.com/data-api/reference/exchanges?token={token}&type=indexes
+
+Devuelve: List<**MarketCode**>
+
+3. **GetAllIndexes()**
+
+Obtiene todos los índices financieros disponibles.
+
+GET: https://api.profit.com/data-api/reference/indices?token={token}&skip=0&limit=1000
+
+Devuelve: List<**FinancialInstrument**>
+
+**Observación:** La API devuelve un objeto con una propiedad data, por eso se usa JObject.Parse.
+
+4. **GetUsaIndexes()**
+
+Obtiene índices financieros del mercado estadounidense.
+
+GET: https://api.profit.com/data-api/reference/indices?token={token}&limit=1000&exchange=INDX&country=United%20States&currency=USD&available_data=historical&available_data=fundamental&type=INDEX
+
+Devuelve: List<**FinancialInstrument**>
+
+5. **GetIndexesMarketCountry(string exchangeCode)**
+
+Obtiene índices de un mercado específico, filtrado por su código.
+
+**Parámetro:**
+
+exchangeCode: código del mercado (por ejemplo "INDX")
+
+GET: https://api.profit.com/data-api/reference/indices?token={token}&skip=0&limit=1000&exchange={exchangeCode}&available_data=historical&available_data=fundamental&type=INDEX
+
+Devuelve: List<**FinancialInstrument**>
+
+6. **GetStocksMarketsCountry(string exchangeCode)**
+
+Obtiene acciones correspondientes a un mercado específico.
+
+**Parámetro:**
+
+exchangeCode: código de país del mercado.
+
+GET: https://api.profit.com/data-api/reference/stocks?token={token}&exchange={exchangeCode}&limit=1000
+
+Devuelve: List<**FinancialInstrument**>
+
+7. **GetIndexesConstituens(string symbol)**
+
+Obtiene los constituyentes (acciones/activos) que componen un índice.
+
+**Parámetro:**
+
+symbol: el símbolo del índice (por ejemplo, "GSPC" para S&P 500)
+
+GET: https://api.profit.com/data-api/fundamentals/indexes/index_constituents/{symbol}?token={token}
+
+Devuelve: List<**IndexConstituent**>
+
+8. **GetLastQuote(string symbol)**
+
+Obtiene la última cotización (precio, cambio, volumen, etc.) de un instrumento.
+
+**Parámetro:**
+
+symbol: el símbolo del instrumento financiero (acción o índice)
+
+GET: https://api.profit.com/data-api/market-data/quote/{symbol}?token={token}
+
+Devuelve: LastQuote
+
+#### Entidades utilizadas
+```bash
+Entidad             | Descripción
+MarketCode          | Contiene el código e información del mercado.
+FinancialInstrument | Representa una acción o índice financiero.
+IndexConstituent    | Representa un activo que forma parte de un índice.
+LastQuote           | Representa la última cotización de un instrumento.
+```
+
+### CotizacionesController.cs - Documentación
+
+El controlador CotizacionesController se encarga de exponer endpoints HTTP para consultar datos financieros a través de un repositorio (ICotizacionesRepository) que se conecta a la API de Profit.
+
+#### Constructor
+
+```bash
+	public CotizacionesController(ICotizacionesRepository repo)
+```
+
+- Se inyecta una dependencia del repositorio **ICotizacionesRepository** a través de inyección de dependencias.
+
+- Esto permite desacoplar la lógica de negocio de la lógica HTTP, facilitando pruebas y mantenibilidad.
+
+#### Endpoints disponibles
+
+1. GET /api/markets/stocks-codes
+
+**Descripción:**
+Obtiene los códigos de los mercados de acciones disponibles.
+
+**Respuestas:**
+
+**200 OK:** Lista de mercados (List<**MarketCode**>)
+
+**200 OK:** "No hay elementos que mostrar" si la lista está vacía
+
+**404 Not Found:** Si la respuesta es null
+
+
+2. GET /api/markets/indexes-codes
+
+**Descripción:**
+Obtiene los códigos de los mercados de índices disponibles.
+
+**Respuestas:**
+
+**200 OK:** Lista de mercados (List<**MarketCode**>)
+
+**200 OK:** "No hay elementos que mostrar" si la lista está vacía
+
+**404 Not Found:** Si la respuesta es null
+
+
+3. GET /api/markets/all-indexes
+
+**Descripción:**
+Obtiene todos los índices financieros disponibles, sin importar el país o el mercado.
+
+**Respuestas:**
+
+**200 OK:** Lista de mercados (List<**FinancialInstrument**>)
+
+**200 OK:** "No hay elementos que mostrar" si la lista está vacía
+
+**404 Not Found:** Si la respuesta es null
+
+
+4. GET /api/markets/usa-indexes
+
+**Descripción:**
+Obtiene los índices del mercado estadounidense, filtrando por país, moneda y tipo.
+
+**Respuestas:**
+
+**200 OK:** Lista de mercados (List<**FinancialInstrument**>)
+
+**200 OK:** "No hay elementos que mostrar" si la lista está vacía
+
+**404 Not Found:** Si la respuesta es null
+
+
+5. GET /api/markets/indexes-by-exchange?exchangeCode=XXX
+
+**Descripción:**
+Obtiene los índices disponibles en un mercado específico.
+
+**Parametros:**
+
+- exchangeCode: código del mercado (por ejemplo "INDX")
+
+**Respuestas:**
+
+**200 OK:** Lista de mercados (List<**FinancialInstrument**>)
+
+**200 OK:** Lista vacía si no hay resultados
+
+**404 Not Found:** Si la respuesta es null
+
+6. GET /api/markets/stocks-by-exchange?exchangeCode=XXX
+
+**Descripción:**
+Obtiene las acciones disponibles en un mercado específico.
+
+**Parametros:**
+
+- exchangeCode: código del mercado (por ejemplo "AAPL")
+
+**Respuestas:**
+
+**200 OK:** Lista de mercados (List<**FinancialInstrument**>)
+
+**200 OK:** Lista vacía si no hay acciones
+
+**404 Not Found:** Si la respuesta es null
+
+
+7. GET /api/markets/indexes-constituens?symbol=XXX
+
+**Descripción:**
+Obtiene los constituyentes (acciones) que componen un índice determinado.
+
+**Parametros:**
+
+- symbol: símbolo del índice (por ejemplo "NDX")
+
+**Respuestas:**
+
+**200 OK:** Lista de mercados (List<**IndexConstituent**>)
+
+**200 OK:** Lista vacía si no hay acciones
+
+**404 Not Found:** Si la respuesta es null
+
+**500 Internal Server Error:** Si ocurre un error en tiempo de ejecución
+
+
+8. GET /api/markets/last-quote?symbol=XXX
+
+**Descripción:**
+Devuelve la última cotización de un instrumento financiero.
+
+**Parametros:**
+
+- symbol: símbolo del instrumento (por ejemplo "AAPL")
+
+**Respuestas:**
+
+**200 OK:** Objeto LastQuote
+
+**404 Not Found:** Si la respuesta es null
+
+
+### Tests
+El proyecto cuenta con dos tipos de pruebas automatizadas: tests unitarios y tests de integración, desarrollados con **xUnit** y utilizando **Moq** para simular las dependencias en los tests unitarios.
+
+#### Tests Unitarios
+Los tests unitarios están ubicados en el archivo **StocksInedexesUnitTests.cs** y prueban de forma aislada la lógica de los controladores, simulando las dependencias con Moq.
+
+**Objetivo:** Verificar que los métodos del controlador CotizacionesController respondan correctamente al recibir datos simulados del repositorio **ICotizacionesRepository**.
+
+**Se testean los siguientes métodos:**
+```bash
+Método del Controlador                | Descripción
+GetStocksCodes()                      | Devuelve los códigos de mercados de acciones
+GetIndexesCodes()                     | Devuelve los códigos de mercados de índices
+GetAllIndexes()                       | Retorna todos los índices disponibles
+GetUsaIndexes()                       | Retorna los índices del mercado estadounidense
+GetIndexesByExchange(string code)     | Retorna índices según un país o mercado
+GetStocksByExchange(string code)      | Retorna acciones según un país o mercado
+GetIndexesConstituens(string symbol)  | Retorna los constituyentes de un índice
+GetLastQuoteInstrument(string symbol) | Retorna la última cotización de un instrumento
+```
+
+#### Tecnologías utilizadas:
+
+- **xUnit** para la estructura del test
+
+- **Moq** para simular dependencias (repositorio)
+
+- **Assert** para verificar resultados esperados
+
+
+#### Tests de integración
+
+Los tests de integración (ubicados en el archivo **stocksIndexesIntegrationTests.cs**) verifican el comportamiento real del sistema haciendo llamadas HTTP a los endpoints expuestos por la API. Se utiliza un entorno controlado gracias a **WebApplicationFactory**.
+
+**Objetivo:** Validar que los endpoints funcionen correctamente al integrarse todos los componentes (controlador, servicio, repositorio, etc).
+
+**Ejemplo de lo que se testea:**
+
+```bash
+Endpoint                             | Descripción
+/api/cotizaciones/stocks             | Devuelve todos los instrumentos tipo acción
+/api/cotizaciones/indexes            | Devuelve todos los índices disponibles
+/api/cotizaciones/lastquote/{symbol} | Devuelve la última cotización de un instrumento
+```
+
+#### Tecnologías utilizadas:
+
+- xUnit
+
+- HttpClient
+
+- WebApplicationFactory de ASP.NET Core
+
+#### Cómo ejecutar los tests:
+
+Desde la raíz del proyecto de test, podés ejecutar todos los tests con:
+
+```bash
+	dotnet test
+```
+
+Esto correrá tanto los tests unitarios como los de integración y te mostrará un resumen con el resultado de cada prueba.
+
