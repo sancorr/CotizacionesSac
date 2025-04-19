@@ -840,3 +840,133 @@ Desde la raíz del proyecto de test, podés ejecutar todos los tests con:
 
 Esto correrá tanto los tests unitarios como los de integración y te mostrará un resumen con el resultado de cada prueba.
 
+
+### Servicio de WebSocket: Cotizaciones en Tiempo Real
+
+El sistema cuenta con un servicio que se conecta a una API de WebSocket para obtener precios en tiempo real de activos financieros. A continuación, se detalla cómo funciona este servicio, sus componentes y cómo interactuar con él.
+
+####  Interfaz IPriceStreamService
+
+Esta interfaz define los métodos y eventos que debe implementar cualquier servicio que provea cotizaciones en tiempo real.
+
+```bash
+	namespace CotizacionesDomain.Interfaces
+{
+    public interface IPriceStreamService
+    {
+        Task SubscribeAsync(IEnumerable<string> Tickers);
+        Task UnsubscribeAsync(IEnumerable<string> Tickers);
+
+        event Action<PriceData> OnPriceRecieved;
+    }
+}
+
+```
+
+- **SubscribeAsync:** permite suscribirse a una lista de tickers, acción necesaria para recibir cotizaciones en tiempo real de los tickers enviados en este metodo.
+
+- **UnsubscribeAsync:** permite dejar de escuchar ciertos tickers.
+
+- **OnPriceRecieved:** evento que se dispara cada vez que se recibe un nuevo precio, para notificar al resto de la aplicación.
+
+##### Clase **PriceData.cs**
+
+Objeto que representa los datos de una cotización.
+
+```bash
+	namespace CotizacionesDomain.Entities
+{
+    public class PriceData
+    {
+        public string Ticker { get; set; }
+        public decimal Price { get; set; }
+        public long Timestamp { get; set; }
+        public decimal Volume { get; set; }
+    }
+}
+
+```
+
+#### Implementacion - Repositorio
+
+Ubicada en CotizacionesInfrastructure.Repositories, esta clase implementa la interfaz **IPriceStreamService**.
+
+**Conexión y configuración**
+
+- Se conecta al WebSocket de Profit usando un token que se lee desde appsettings.json.
+
+- Utiliza ClientWebSocket para establecer y mantener la conexión.
+
+**Suscripción**
+
+Envía un mensaje JSON como:
+
+```bash
+{
+  "action": "subscribe",
+  "tickers": ["YPFD", "GGAL"]
+}
+```
+
+**Desuscripción**
+
+Envía un mensaje JSON como:
+
+```bash
+{
+  "action": "unsubscribe",
+  "tickers": ["YPFD"]
+}
+```
+
+###### Bucle de escucha
+El método **RecieveLoopAsync()** se ejecuta en segundo plano, manteniendo una escucha constante del WebSocket. Cada vez que se recibe un mensaje:
+
+- Se deserializa a un objeto PriceData.
+
+- Se dispara el evento OnPriceRecieved.
+
+#### Configuración de Token
+
+Estructura en appsettings.json:
+
+```bash
+{
+  "ProfitApi": {
+    "Token": "tu_token_aqui"
+  }
+}
+```
+
+#### Clase de configuración:
+
+```bash
+public class ProfitApiSettings
+{
+    public string Token { get; set; }
+}
+
+```
+
+#### Helper para cargar el token:
+
+
+```bash
+public static class ProfitApiSettingsLoader
+{
+    public static string LoadToken()
+    {
+        var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
+        var json = File.ReadAllText(jsonPath);
+        var jObject = JObject.Parse(json);
+        return jObject["ProfitApi"]?["Token"]?.ToString();
+    }
+}
+```
+##### Consideraciónes
+
+- La conexión al WebSocket se realiza sólo cuando se realiza una suscripción.
+
+- El sistema escucha mensajes en segundo plano una vez establecida la conexión.
+
+- El evento OnPriceRecieved permite a otras partes del sistema reaccionar en tiempo real ante nuevos precios.
