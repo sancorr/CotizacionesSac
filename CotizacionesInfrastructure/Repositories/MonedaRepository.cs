@@ -31,9 +31,21 @@ namespace CotizacionesInfrastructure.Repositories
 				var monedas = JsonConvert.DeserializeObject<List<Moneda>>(response);
 				return monedas;
 			}
+			catch (HttpRequestException ex)
+			{
+				throw new Exception($"Error de red o HTTP. Error: {ex.Message}", ex);
+			}
+			catch (TaskCanceledException ex)
+			{
+				throw new Exception($"Timeout al intentar obtener datos. Error: {ex.Message}", ex);
+			}
+			catch (JsonException ex)
+			{
+				throw new Exception($"Error al deserializar datos. Error: {ex.Message}", ex);
+			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception($"Error inesperado. Error: {ex.Message}", ex);
 			}
 		}
 
@@ -47,9 +59,21 @@ namespace CotizacionesInfrastructure.Repositories
 				var euros = JsonConvert.DeserializeObject<Moneda>(response);
 				return euros;
 			}
+			catch (HttpRequestException ex)
+			{
+				throw new Exception($"Error de red o HTTP. Error: {ex.Message}", ex);
+			}
+			catch (TaskCanceledException ex)
+			{
+				throw new Exception($"Timeout al intentar obtener datos. Error: {ex.Message}", ex);
+			}
+			catch (JsonException ex)
+			{
+				throw new Exception($"Error al deserializar datos. Error: {ex.Message}", ex);
+			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception($"Error inesperado. Error: {ex.Message}", ex);
 			}
 		}
 
@@ -63,9 +87,21 @@ namespace CotizacionesInfrastructure.Repositories
 				var real = JsonConvert.DeserializeObject<Moneda>(response);
 				return real;
 			}
+			catch (HttpRequestException ex)
+			{
+				throw new Exception($"Error de red o HTTP. Error: {ex.Message}", ex);
+			}
+			catch (TaskCanceledException ex)
+			{
+				throw new Exception($"Timeout al intentar obtener datos. Error: {ex.Message}", ex);
+			}
+			catch (JsonException ex)
+			{
+				throw new Exception($"Error al deserializar datos. Error: {ex.Message}", ex);
+			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception($"Error inesperado. Error: {ex.Message}", ex);
 			}
 		}
 
@@ -79,9 +115,21 @@ namespace CotizacionesInfrastructure.Repositories
 				var chileno = JsonConvert.DeserializeObject<Moneda>(respone);
 				return chileno;
 			}
+			catch (HttpRequestException ex)
+			{
+				throw new Exception($"Error de red o HTTP. Error: {ex.Message}", ex);
+			}
+			catch (TaskCanceledException ex)
+			{
+				throw new Exception($"Timeout al intentar obtener datos. Error: {ex.Message}", ex);
+			}
+			catch (JsonException ex)
+			{
+				throw new Exception($"Error al deserializar datos. Error: {ex.Message}", ex);
+			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception($"Error inesperado. Error: {ex.Message}", ex);
 			}
 		}
 
@@ -95,9 +143,21 @@ namespace CotizacionesInfrastructure.Repositories
 				var uruguayo = JsonConvert.DeserializeObject<Moneda>(respone);
 				return uruguayo;
 			}
+			catch (HttpRequestException ex)
+			{
+				throw new Exception($"Error de red o HTTP. Error: {ex.Message}", ex);
+			}
+			catch (TaskCanceledException ex)
+			{
+				throw new Exception($"Timeout al intentar obtener datos. Error: {ex.Message}", ex);
+			}
+			catch (JsonException ex)
+			{
+				throw new Exception($"Error al deserializar datos. Error: {ex.Message}", ex);
+			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw new Exception($"Error inesperado. Error: {ex.Message}", ex);
 			}
 		}
 	}

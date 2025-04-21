@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CotizacionesDomain.Entities;
 using CotizacionesDomain.Interfaces;
+using CotizacionesInfrastructure.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,11 +15,12 @@ namespace CotizacionesInfrastructure.Repositories
 	public class MarketCodesRepositories : ICotizacionesRepository
 	{
 		private readonly HttpClient _httpClient; 
-		private readonly string token = "f89dee4238b641e684301f3973086aaf";
+		private readonly string token;
 
 		public MarketCodesRepositories(HttpClient httpClient)
 		{
 			_httpClient = httpClient;
+			token = ProfitApiSettingsLoader.LoadToken();
 		}
 
 		// 1- Obtener los codigos de mercados de acciones (stocks)
@@ -28,12 +30,26 @@ namespace CotizacionesInfrastructure.Repositories
 			{
 				string response = await _httpClient.GetStringAsync($"https://api.profit.com/data-api/reference/exchanges?token={token}&type=stocks");
 
+				if (string.IsNullOrEmpty(response))
+					throw new Exception("La respuesta de la API no contiene datos.");
+
 				var codes = JsonConvert.DeserializeObject<List<MarketCode>>(response);
 				return codes;
 			}
-			catch (Exception)
+			catch (HttpRequestException ex)
 			{
-				throw;
+				//Error de red,servidor caido, timeout
+				throw new Exception("No se pudo contectar al servidor. Error: ", ex);
+			}
+			catch (JsonException ex)
+			{
+				//Error de parseo
+				throw new Exception("No se pudo interpretar la respuesta del servidor.Error: ", ex);
+			}
+			catch (Exception ex)
+			{
+				//Errores generales, por ejemplo de protocolo http (no se capturan automaticamente, por eso muestro el mensaje)
+				throw new Exception("Ocurrió un error inesperado. Error: ", ex);
 			}
 		}
 
@@ -44,12 +60,26 @@ namespace CotizacionesInfrastructure.Repositories
 			{
 				string response = await _httpClient.GetStringAsync($"https://api.profit.com/data-api/reference/exchanges?token={token}&type=indexes");
 
+				if (string.IsNullOrEmpty(response))
+					throw new Exception("La respuesta de la API no contiene datos.");
+
 				var codes = JsonConvert.DeserializeObject<List<MarketCode>>(response);
 				return codes;
 			}
-			catch (Exception)
+			catch (HttpRequestException ex)
 			{
-				throw;
+				//Error de red,servidor caido, timeout
+				throw new Exception("No se pudo contectar al servidor. Error: ", ex);
+			}
+			catch (JsonException ex)
+			{
+				//Error de parseo
+				throw new Exception("No se pudo interpretar la respuesta del servidor.Error: ", ex);
+			}
+			catch (Exception ex)
+			{
+				//Errores generales, por ejemplo de protocolo http (no se capturan automaticamente, por eso muestro el mensaje)
+				throw new Exception("Ocurrió un error inesperado. Error: ", ex);
 			}
 		}
 
@@ -62,12 +92,27 @@ namespace CotizacionesInfrastructure.Repositories
 
 				var jsonObjetc = JObject.Parse(response);
 				var dataArray = jsonObjetc["data"].ToString();
+
+				if (string.IsNullOrEmpty(dataArray))
+					throw new Exception("La respuesta de la API no contiene datos de índices.");
+
 				var indexes = JsonConvert.DeserializeObject<List<FinancialInstrument>>(dataArray);
 				return indexes;
 			}
-			catch (Exception)
+			catch (HttpRequestException ex)
 			{
-				throw;
+				//Error de red,servidor caido, timeout
+				throw new Exception("No se pudo contectar al servidor. Error: ", ex);
+			}
+			catch (JsonException ex)
+			{
+				//Error de parseo
+				throw new Exception("No se pudo interpretar la respuesta del servidor.Error: ", ex);
+			}
+			catch (Exception ex)
+			{
+				//Errores generales, por ejemplo de protocolo http (no se capturan automaticamente, por eso muestro el mensaje)
+				throw new Exception("Ocurrió un error inesperado. Error: ", ex);
 			}
 		}
 
@@ -80,12 +125,27 @@ namespace CotizacionesInfrastructure.Repositories
 
 				var jsonObject = JObject.Parse(response);
 				var dataArray = jsonObject["data"].ToString();
+
+				if (string.IsNullOrEmpty(dataArray))
+					throw new Exception("La respuesta de la API no contiene datos de índices.");
+
 				var usaIndexes = JsonConvert.DeserializeObject<List<FinancialInstrument>>(dataArray);
 				return usaIndexes;
 			}
-			catch (Exception)
+			catch (HttpRequestException ex)
 			{
-				throw;
+				//Error de red,servidor caido, timeout
+				throw new Exception("No se pudo contectar al servidor. Error: ", ex);
+			}
+			catch (JsonException ex)
+			{
+				//Error de parseo
+				throw new Exception("No se pudo interpretar la respuesta del servidor.Error: ", ex);
+			}
+			catch (Exception ex)
+			{
+				//Errores generales, por ejemplo de protocolo http (no se capturan automaticamente, por eso muestro el mensaje)
+				throw new Exception("Ocurrió un error inesperado. Error: ", ex);
 			}
 		}
 
@@ -99,12 +159,27 @@ namespace CotizacionesInfrastructure.Repositories
 
 				var jsonObject = JObject.Parse(response);
 				var dataArray = jsonObject["data"].ToString();
+
+				if (string.IsNullOrEmpty(dataArray))
+					throw new Exception("La respuesta de la API no contiene datos de índices.");
+
 				var indexes = JsonConvert.DeserializeObject<List<FinancialInstrument>>(dataArray);
 				return indexes;
 			}
+			catch (HttpRequestException ex)
+			{
+				//Error de red,servidor caido, timeout
+				throw new Exception("No se pudo contectar al servidor. Error: ", ex);
+			}
+			catch (JsonException ex)
+			{
+				//Error de parseo
+				throw new Exception("No se pudo interpretar la respuesta del servidor.Error: ", ex);
+			}
 			catch (Exception ex)
 			{
-				throw ex;
+				//Errores generales, por ejemplo de protocolo http (no se capturan automaticamente, por eso muestro el mensaje)
+				throw new Exception("Ocurrió un error inesperado. Error: ", ex);
 			}
 		}
 
@@ -118,12 +193,27 @@ namespace CotizacionesInfrastructure.Repositories
 
 				var jsonObject = JObject.Parse(response);
 				var dataArray = jsonObject["data"].ToString();
+
+				if (string.IsNullOrEmpty(dataArray))
+					throw new Exception("La respuesta de la API no contiene datos.");
+
 				var stocks = JsonConvert.DeserializeObject<List<FinancialInstrument>>(dataArray);
 				return stocks;
 			}
+			catch (HttpRequestException ex)
+			{
+				//Error de red,servidor caido, timeout
+				throw new Exception("No se pudo contectar al servidor. Error: ", ex);
+			}
+			catch (JsonException ex)
+			{
+				//Error de parseo
+				throw new Exception("No se pudo interpretar la respuesta del servidor.Error: ", ex);
+			}
 			catch (Exception ex)
 			{
-				throw ex;
+				//Errores generales, por ejemplo de protocolo http (no se capturan automaticamente, por eso muestro el mensaje)
+				throw new Exception("Ocurrió un error inesperado. Error: ", ex);
 			}
 		}
 
@@ -137,14 +227,28 @@ namespace CotizacionesInfrastructure.Repositories
 			{
 				string response = await _httpClient.GetStringAsync($"https://api.profit.com/data-api/fundamentals/indexes/index_constituents/{symbol}?token={token}");
 
+				if (string.IsNullOrEmpty(response))
+					throw new Exception("La respuesta de la API no contiene datos.");
+
 				var indexConstituentDictionary = JsonConvert.DeserializeObject<Dictionary<string, IndexConstituent>>(response);
 
 				var indexConstituentList = indexConstituentDictionary.Values.ToList();
 				return indexConstituentList;
 			}
+			catch (HttpRequestException ex)
+			{
+				//Error de red,servidor caido, timeout
+				throw new Exception("No se pudo contectar al servidor. Error: ", ex);
+			}
+			catch (JsonException ex)
+			{
+				//Error de parseo
+				throw new Exception("No se pudo interpretar la respuesta del servidor.Error: ", ex);
+			}
 			catch (Exception ex)
 			{
-				throw ex;
+				//Errores generales, por ejemplo de protocolo http (no se capturan automaticamente, por eso muestro el mensaje)
+				throw new Exception("Ocurrió un error inesperado. Error: ", ex);
 			}
 		}
 
@@ -155,13 +259,27 @@ namespace CotizacionesInfrastructure.Repositories
 			{
 				string response = await _httpClient.GetStringAsync($"https://api.profit.com/data-api/market-data/quote/{symbol}?token={token}");
 
+				if (string.IsNullOrEmpty(response))
+					throw new Exception("La respuesta de la API no contiene datos.");
+
 				var lastQuote = JsonConvert.DeserializeObject<LastQuote>(response);
 
 				return lastQuote;
 			}
-			catch (Exception)
+			catch (HttpRequestException ex)
 			{
-				throw;
+				//Error de red,servidor caido, timeout
+				throw new Exception("No se pudo contectar al servidor. Error: ", ex);
+			}
+			catch (JsonException ex)
+			{
+				//Error de parseo
+				throw new Exception("No se pudo interpretar la respuesta del servidor.Error: ", ex);
+			}
+			catch (Exception ex)
+			{
+				//Errores generales, por ejemplo de protocolo http (no se capturan automaticamente, por eso muestro el mensaje)
+				throw new Exception("Ocurrió un error inesperado. Error: ", ex);
 			}
 		}
 	}

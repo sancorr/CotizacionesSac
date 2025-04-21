@@ -532,14 +532,16 @@ Esta es la clase repositorio que implementa el contrato de la Interface ICotizac
 #### Token
 El acceso a la API de Profit requiere un token. En esta clase está definido como:
 ```bash
-	private readonly string token = "f89dee4238b641e684301f3973086aaf";
+	private readonly string token;
 ```
 
 #### Constructor
 ```bash
 	public MarketCodesRepositories(HttpClient httpClient)
+	token = ProfitApiSettingsLoader.LoadToken();
 ```
 - Inyecta una instancia de HttpClient mediante inyección de dependencias (DI), lo que permite su reutilización y testeo.
+- Lée el token desde el archivo de configuración utilizando la clase helper que usa un método para leér el token desde el archivo de configuración y lo dispone al resto de la aplicación para su uso.
 
 ###### Métodos
 

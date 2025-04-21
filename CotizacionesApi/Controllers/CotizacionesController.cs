@@ -36,7 +36,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 		}
 
@@ -57,7 +57,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 		}
 
@@ -77,7 +77,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 		}
 
@@ -96,7 +96,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 		}
 
@@ -113,7 +113,7 @@ namespace CotizacionesApi.Controllers
 
 				return Ok(indexesByExchange);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				throw;
 			}
@@ -134,7 +134,7 @@ namespace CotizacionesApi.Controllers
 
 				return Ok(stocksByExchange);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				throw;
 			}
@@ -157,7 +157,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				return StatusCode(500, $"Ocurrio un error: {ex.Message}");
+				throw;
 			}
 		}
 
@@ -173,7 +173,7 @@ namespace CotizacionesApi.Controllers
 
 				return Ok(lastQuote);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 				throw;
 			}

@@ -36,7 +36,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 
 		}
@@ -51,7 +51,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 		}
 
@@ -69,7 +69,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 		}
 
@@ -86,7 +86,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 		}
 
@@ -103,7 +103,7 @@ namespace CotizacionesApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				throw ex;
+				throw;
 			}
 		}
 	}
